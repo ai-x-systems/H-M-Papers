@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+:root {
+  /* Paper stock backgrounds */
+  --color-paper: #f6f6f1;
+  --color-paper-warm: #efeee5;
+
+  /* Ink — primary brand navy, read off a stamped ledger */
+  --color-ink: #16233f;
+  --color-ink-soft: #48546c;
+  --color-ink-dark: #0f1a2e;
+
+  /* Seal — the amber wax-stamp accent, used sparingly */
+  --color-seal: #b9791e;
+  --color-seal-dark: #96620f;
+  --color-seal-soft: #f2e2c4;
+
+  /* Hairlines + surfaces */
+  --color-line: #e1ddd0;
+  --color-surface: #ffffff;
+
+  --color-success: #2f6b46;
+  --color-success-soft: #e1efe4;
+
+  --font-display: ui-serif, "Iowan Old Style", "Palatino Linotype",
+    "URW Palladio L", Palatino, Georgia, serif;
+  --font-body: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-utility: ui-monospace, "SF Mono", "SFMono-Regular", Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+@theme inline {
+  --color-paper: var(--color-paper);
+  --color-paper-warm: var(--color-paper-warm);
+  --color-ink: var(--color-ink);
+  --color-ink-soft: var(--color-ink-soft);
+  --color-ink-dark: var(--color-ink-dark);
+  --color-seal: var(--color-seal);
+  --color-seal-dark: var(--color-seal-dark);
+  --color-seal-soft: var(--color-seal-soft);
+  --color-line: var(--color-line);
+  --color-surface: var(--color-surface);
+  --color-success: var(--color-success);
+  --color-success-soft: var(--color-success-soft);
+
+  --font-serif: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-utility);
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  border-color: var(--color-line);
+}
+
+::selection {
+  background: var(--color-seal-soft);
+  color: var(--color-ink-dark);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-seal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Signature motif: a small fanned paper-stack mark, reused as a section
+   marker in place of generic numbered circles. */
+.stack-mark {
+  position: relative;
+  width: 1.25rem;
+  height: 1rem;
+}
+.stack-mark span {
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 1px;
+  background: var(--color-paper);
+}
+.stack-mark span:nth-child(1) {
+  transform: translate(0, 2px);
+  opacity: 0.45;
+}
+.stack-mark span:nth-child(2) {
+  transform: translate(1.5px, 1px);
+  opacity: 0.7;
+}
+.stack-mark span:nth-child(3) {
+  transform: translate(3px, 0);
+}
